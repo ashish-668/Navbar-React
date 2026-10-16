@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Icons from "../common/Icons";
 import Counter from "../Counter";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const MAP_DATA = [
@@ -32,6 +33,17 @@ const Navbar = () => {
 
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+  if (open) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [open]);
   return (
     <>
       <section className="min-h-screen w-full flex flex-col bg-bright-orange py-6">
@@ -52,7 +64,8 @@ const Navbar = () => {
                 <ul className="flex items-center justify-center gap-5 max-lg:flex-col">
                   {MAP_DATA.map((item, index) => (
                     <li key={index}>
-                      <a onClick={() => setOpen(!open)}
+                      <a
+                        onClick={() => setOpen(!open)}
                         className="text-white text-lg leading-150 hover:text-white/70 transition-all duration-300 ease-in"
                         href="#"
                       >
@@ -75,7 +88,10 @@ const Navbar = () => {
               </div>
             </div>
             <div className="max-lg:flex hidden">
-              <button className=" relative z-9999" onClick={() => setOpen(!open)}>
+              <button
+                className=" relative z-9999"
+                onClick={() => setOpen(!open)}
+              >
                 <Icons icon={open ? "crossmenu" : "menu"} />
               </button>
             </div>
@@ -88,6 +104,7 @@ const Navbar = () => {
           </div>
         </div>
       </section>
+      <section className="min-h-screen bg-amber-500 w-full"></section>
     </>
   );
 };
