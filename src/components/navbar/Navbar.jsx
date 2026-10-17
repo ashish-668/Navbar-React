@@ -58,7 +58,7 @@ const Navbar = () => {
               </a>
             </div>
             <div
-              className={`flex items-center justify-between gap-7 max-w-4xl w-full  max-lg:fixed max-lg:justify-center max-lg:w-full max-lg:max-w-full max-lg:z-999 max-lg:bg-bright-orange  max-lg:h-full max-lg:top-0  ${open ? "max-lg:right-0" : "max-lg:-right-full"}`}
+              className={`flex items-center justify-between gap-7 transition-all duration-400 ease-in max-w-4xl w-full  max-lg:fixed max-lg:justify-center max-lg:w-full max-lg:max-w-full max-lg:z-999 max-lg:bg-bright-orange  max-lg:h-full max-lg:top-0  ${open ? "max-lg:right-0" : "max-lg:-right-full"}`}
             >
               <div>
                 <ul className="flex items-center justify-center gap-5 max-lg:flex-col">
