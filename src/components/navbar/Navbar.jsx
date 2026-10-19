@@ -3,6 +3,7 @@ import { useState } from "react";
 import Icons from "../common/Icons";
 import Counter from "../Counter";
 import { useEffect } from "react";
+import BackToTop from "../common/BackToTop";
 
 const Navbar = () => {
   const MAP_DATA = [
@@ -105,6 +106,7 @@ const Navbar = () => {
         </div>
       </section>
       <section className="min-h-screen bg-amber-500 w-full"></section>
+      <BackToTop/>
     </>
   );
 };
