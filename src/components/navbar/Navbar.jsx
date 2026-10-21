@@ -73,7 +73,7 @@ const Navbar = () => {
               </a>
             </div>
             <div
-              className={`flex items-center justify-between gap-7 transition-all duration-400 ease-in max-w-4xl w-full  max-lg:fixed max-lg:justify-center max-lg:w-full max-lg:max-w-full max-lg:z-999 max-lg:bg-bright-orange  max-lg:h-full max-lg:top-0  ${open ? "max-lg:right-0" : "max-lg:-right-full"}`}
+              className={`flex items-center justify-between gap-7 transition-all duration-400 ease-in max-w-4xl w-full  max-lg:fixed max-lg:justify-center max-lg:w-full max-lg:max-w-full max-lg:z-999 dark:bg-black max-lg:bg-bright-orange  max-lg:h-full max-lg:top-0  ${open ? "max-lg:right-0" : "max-lg:-right-full"}`}
             >
               <div>
                 <ul className="flex items-center justify-center gap-5 max-lg:flex-col">
@@ -102,13 +102,20 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
-            <div className="max-lg:flex hidden">
-              <button
-                className=" relative z-9999"
-                onClick={() => setOpen(!open)}
-              >
-                <Icons icon={open ? "crossmenu" : "menu"} />
-              </button>
+            <div className="hidden items-center justify-center gap-7 max-lg:flex">
+              <div className="max-lg:flex hidden">
+                <button
+                  className=" relative z-9999"
+                  onClick={() => setOpen(!open)}
+                >
+                  <Icons icon={open ? "crossmenu" : "menu"} />
+                </button>
+              </div>
+              <div className="max-lg:flex hidden">
+                <button onClick={toggledarkmode} className="bg-bright-orange rounded-xl border-[0.7px] border-white transition-all duration-300 ease-in cursor-pointer hover:bg-white text-base leading-150 py-3 px-6 text-white hover:text-bright-orange ">
+                        {darkMode ? "Light Mode" : "Dark Mode"}
+                      </button>
+              </div>
             </div>
           </div>
         </div>
