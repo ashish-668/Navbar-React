@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import Icons from "./Icons";
 
-const BackToTop = () => {
-  const [ShowButton, setShowButton] = useState(false);
+import { useEffect, useState } from "react";
+import { ArrowUp } from "lucide-react";
+
+const BackToTop = ({ darkMode }) => {
+  const [showButton, setShowButton] = useState(false);
+
   useEffect(() => {
-    function handelScroll() {
-      if (window.scrollY > 200) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
+    function handleScroll() {
+      setShowButton(window.scrollY > 200);
     }
-    window.addEventListener("scroll", handelScroll);
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener("scroll", handelScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -23,17 +23,25 @@ const BackToTop = () => {
       behavior: "smooth",
     });
   }
+
   return (
-    <div>
-      {ShowButton && (
+    <>
+      {showButton && (
         <button
           onClick={backToTop}
-          className="cursor-pointer bg-bright-orange size-16 max-sm:size-12 flex items-center justify-center rounded-full fixed right-8 bottom-14"
+          aria-label="Back to top"
+          className="cursor-pointer dark:bg-white bg-bright-orange
+          size-16 max-sm:size-12 flex items-center justify-center
+          rounded-full fixed right-8 bottom-14"
         >
-         <Icons icon="backarrow"/>
+          {darkMode ? (
+            <ArrowUp size={22} color="black " />
+          ) : (
+            <ArrowUp size={22} color="white" />
+          )}
         </button>
       )}
-    </div>
+    </>
   );
 };
 

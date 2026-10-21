@@ -6,6 +6,8 @@
   font-family: "Open Sans", sans-serif;
 }
 
+@custom-variant dark (&:where([theme="dark"], [theme="dark"] *));
+
 @theme {
   --color-bright-orange: #ff5300;
 
@@ -13,3 +15,4 @@
   --leading-100: 100%;
 
 }
+

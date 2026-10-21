@@ -6,6 +6,20 @@ import { useEffect } from "react";
 import BackToTop from "../common/BackToTop";
 
 const Navbar = () => {
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  function toggledarkmode() {
+    const newMode = !darkMode;
+
+    setDarkMode(newMode);
+
+    document.body.setAttribute(
+      "theme",
+      newMode ? "dark" : "light"
+    );
+  }
+
   const MAP_DATA = [
     {
       name: "Home",
@@ -35,19 +49,19 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-  if (open) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [open]);
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
   return (
     <>
-      <section className="min-h-screen w-full flex flex-col bg-bright-orange py-6">
+      <section className="min-h-screen w-full flex flex-col dark:bg-black bg-bright-orange py-6">
         <div className="mx-auto px-5 w-full max-w-345">
           <div className="flex items-center justify-between gap-7">
             <div>
@@ -76,15 +90,15 @@ const Navbar = () => {
                   ))}
 
                   <li className="max-lg:flex hidden">
-                    <button className="bg-bright-orange rounded-xl border-[0.7px] border-white transition-all duration-300 ease-in cursor-pointer hover:bg-white text-base leading-150 py-3 px-6 text-white hover:text-bright-orange ">
-                      Button
+                    <button onClick={toggledarkmode} className="bg-bright-orange rounded-xl border-[0.7px] border-white transition-all duration-300 ease-in cursor-pointer hover:bg-white text-base leading-150 py-3 px-6 text-white hover:text-bright-orange ">
+                      {darkMode ? "Light Mode" : "Dark Mode"}
                     </button>
                   </li>
                 </ul>
               </div>
               <div className="flex max-lg:hidden">
-                <button className="bg-bright-orange rounded-xl border-[0.7px] border-white transition-all duration-300 ease-in cursor-pointer hover:bg-white text-base leading-150 py-3 px-6 text-white hover:text-bright-orange ">
-                  Button
+                <button onClick={toggledarkmode} className="bg-bright-orange rounded-xl border-[0.7px] border-white transition-all duration-300 ease-in cursor-pointer hover:bg-white text-base leading-150 py-3 px-6 text-white hover:text-bright-orange ">
+                  {darkMode ? "Light Mode" : "Dark Mode"}
                 </button>
               </div>
             </div>
@@ -105,8 +119,8 @@ const Navbar = () => {
           </div>
         </div>
       </section>
-      <section className="min-h-screen bg-amber-500 w-full"></section>
-      <BackToTop/>
+      <section className="min-h-screen bg-amber-500 w-full dark:bg-black"></section>
+      <BackToTop darkMode={darkMode} />
     </>
   );
 };
